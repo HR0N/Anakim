@@ -1,0 +1,111 @@
+@import "variables";
+
+@media screen and (max-width: 768px) {
+    header{
+        .navigation{
+            max-height: 0;
+            overflow: hidden;
+            flex-direction: column;
+            height: inherit !important;
+            transition: ease-in-out all .5s;
+        }
+        .component {
+            width: 100%;
+            ul {
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                li{
+                    flex-direction: column;
+                    text-align: center;
+                    width: 100%;
+                    box-shadow: 1px 1px 2px gray;
+                    transition: ease-in-out all .3s;
+                    a{
+                        font-size: 1.5em;
+                    }
+                    &:hover{
+                        background-color: dimgrey;
+                    }
+                    &:hover a{
+                        color: white;
+                    }
+                }
+            }
+        }
+        .auth{
+            margin-bottom: 2px;
+        }
+        .toggle{
+            display: flex !important;
+            justify-content: flex-end;
+            box-shadow: 1px 1px 2px gray;
+            svg{
+                font-size: 1.3em;
+                margin: 12px;
+            }
+        }
+        .dropdown_menu{
+            top: inherit;
+            border: 0;
+            border-radius: 0;
+            width: 100% !important;
+            position: relative !important;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            background-color: $grey;
+            li a{
+                color: white !important;
+                border-top: 1px solid #4ea4de;
+            }
+        }
+    }
+    .active{
+        background-color: $grey;
+        color: white !important;
+    }
+    .link_under_line_decoration a:hover:before{
+        transform: scaleX(0) !important;
+    }
+    .mPlayer_wrapper{
+        height: 100vh;
+    }
+    .mPlayer{
+        height: calc(50vh - 4px) !important;
+        flex-grow: 2;
+        border-top: 1px solid #0c0f16;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        .player_interface{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            height: 20%;
+        }
+        .CurrentTime{
+            height: 20%;
+        }
+    }
+    .PlayList{
+        box-shadow: inset 1px -1px 7px #1e1e1e;
+        width: 100%;
+        position: fixed !important;
+        height: 50vh;
+        top: 0;
+        left: 0;
+        background-color: rgba(76, 76, 76, 1) !important;
+        .title{
+            padding: 3px;
+        }
+        ul{
+            width: 100% !important;
+        }
+    }
+    .KeyCode{
+        user-select: none;
+        .history{font-size: .9em}
+    }
+}
