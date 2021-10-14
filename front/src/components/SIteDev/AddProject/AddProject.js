@@ -18,6 +18,7 @@ const AddProject = props => {
             .then(/*res => console.log(res)*/)
             .catch(err => console.error(err.response.data));
     }
+    /*todo: ......................................................... ......:::::: TEST PUSH ::::::......     */
     return(
     <div className='AddProject'>
         <input className={'form-control'} type="text" placeholder={'project name'}
