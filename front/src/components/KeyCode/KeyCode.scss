@@ -1,0 +1,82 @@
+.KeyCode{
+  border-top: 1px solid lightgrey;
+  min-height: calc(100vh - 51px);
+  outline: none;
+  position: relative;
+  top: 0;
+  .header{
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-evenly;
+    min-height: 216px;
+  }
+  .focus_info{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 4px;
+    text-align: center;
+  }
+  .key_w{
+    margin: 0 50px;
+  }
+  .focus_me{
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    transition: linear all .3s;
+    font-weight: bold;
+    &:hover{
+      opacity: 1;
+    }
+  }
+  .fm_n{
+    color: #ff464f;
+  }
+  .fm_y{
+    opacity: .3;
+    color: green;
+  }
+  .sweet_peach{
+    display: flex;
+    justify-content: center;
+  }
+  .peach_title{
+    color: #a666ff;
+    font-family: monospace;
+    font-size: 1.1em;
+    opacity: .7;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+  }
+  .peach_animate{
+    animation: printed_text steps(17) 3.5s forwards;
+  }
+  .keys{
+    padding-top: 130px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .pushes_history{
+    display: flex;
+    justify-content: left;
+    .history{
+      padding: 0 4px;
+      border-right: 1px solid lightgrey;
+      display: flex;
+      flex-direction: column;
+
+    }
+  }
+}
+@keyframes printed_text{
+  0%{
+    width: 0;}
+  100%{
+    width: 17ch;}
+}

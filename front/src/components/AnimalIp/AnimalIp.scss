@@ -1,0 +1,64 @@
+.AnimalIp{
+  background: #99D7EE url(../../../src/images/background-img-removebg-preview-opacity.png);
+  min-height: calc(100vh - 51px);
+  border-top: 1px solid lightgrey;
+  display: flex;
+  justify-content: center;
+  .show_ip_wrapper{
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 200px;
+  }
+  hr{
+    margin: 10px 0;
+    border-color: #8d8d8d
+  }
+  .ip{
+    font-weight: 500;
+  }
+  .label{
+    font-size: .9em;
+  }
+  .from{
+    font-size: .9em;
+  }
+  .show_animal{
+    .label{
+      transform: translateY(-20px);
+    }
+  }
+  .animal{
+    position: relative;
+    .play_animal_sound{
+      svg{
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        margin: 0 3px;
+        padding: 2px;
+        opacity: .5;
+        cursor: pointer;
+        transition: linear all .3s;
+        &:hover{opacity: 1}
+      }
+    }
+    img{
+      width: 120px;
+    }
+  }
+  .show_ip, .show_animal{
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 3px grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: .25rem;
+    padding: 20px 10px;
+    margin: 5px;
+    height: 120px;
+  }
+}

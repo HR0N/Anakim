@@ -1,0 +1,26 @@
+.SiteDev{
+  padding-top: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  align-items: center;
+  margin: 0 auto;
+  .title{
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    border-radius: .25rem;
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+    transition: linear all .3s;
+    user-select: none;
+    margin: 0;
+    &:hover{
+      box-shadow: 1px 1px 3px #618077;
+      background-color: rgba(105, 105, 105, 0.11);
+    }
+  }
+}
