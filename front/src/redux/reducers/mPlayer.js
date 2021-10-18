@@ -37,7 +37,7 @@ const initialState = {
     },
     music_loaded: null,
 };
-export default function headerReducer(state = initialState, action) {
+export default function mPlayerReducer(state = initialState, action) {
     switch (action.type) {
         case PLAY_FROM_PLAYLIST: return {...state, play_music: action.payload};
         case GET_MUSIC_PLAYLIST: deploy(action.payload); return {...state, music_loaded: true};

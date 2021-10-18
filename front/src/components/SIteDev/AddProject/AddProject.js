@@ -9,14 +9,14 @@ const AddProject = props => {
         set_project_name(e.target.value);
     }
     function submitHandler(){
-        props.click2();
         let data = {
             title: project_name,
             user: 'Hron.',
         };
-        apiClient.post('api/site_dev_create_project', data)
-            .then(/*res => console.log(res)*/)
-            .catch(err => console.error(err.response.data));
+        props.click2(data);
+        /*apiClient.post('api/site_dev_create_project', data)
+            .then(/!*res => console.log(res)*!/)
+            .catch(err => console.error(err.response.data));*/
     }
     return(
     <div className='AddProject'>

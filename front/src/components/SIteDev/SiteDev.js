@@ -2,7 +2,6 @@ import './SiteDev.scss';
 import {connect} from "react-redux";
 import React, {Component} from "react";
 import ProjectList from "./ProjectList/ProjectList";
-import AddProject from "./AddProject/AddProject";
 
 class SiteDev extends Component{
     state = {
@@ -10,6 +9,7 @@ class SiteDev extends Component{
         add_project: false,
         title: 'Project List',
         project_name: '_example',
+        projects: null,
     };
     componentDidMount() {
     }
@@ -44,6 +44,7 @@ class SiteDev extends Component{
 
 function mapStateToProps(state) {
     return {
+        projects: state.SiteDevReducer.projects,
     };
 }
 function mapDispatchToProps(dispatch) {

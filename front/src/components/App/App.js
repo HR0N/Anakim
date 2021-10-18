@@ -13,6 +13,9 @@ import SiteDev from "../SIteDev/SiteDev";
 
 
 class App extends Component{
+    state = {
+     ready_to_player_load: false,
+    };
     // connectToDeviceAndSubscribeToUpdates = async () => {
     //     const device = await navigator.bluetooth
     //         .requestDevice({
@@ -33,9 +36,9 @@ class App extends Component{
   };
 
 
-
   componentDidMount() {
       this.HrefHandler();
+      if(!this.state.ready_to_player_load){this.setState({ready_to_player_load: true})};
   }
 
     render() {
@@ -54,7 +57,8 @@ class App extends Component{
                     <Route exact path={'/site_dev'} component={SiteDev}/>
                     <Route exact path={'/Auth'} />
                 </Switch>
-                <Player/>
+                {/*{this.state.ready_to_player_load ? <Player/> : false}*/}
+
             </div>
         );
     }
