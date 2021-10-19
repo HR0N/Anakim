@@ -19,7 +19,7 @@ class Header extends Component{
                     <li key={idx}
                         className={'link_under_line_decoration'}
                         onClick={e => {this.props.dropdown_toggle(e, li.label);this.forceUpdate();}}
-                    ><a data-href={'yes'}>{li.label}</a>
+                    ><button data-href={'yes'}>{li.label}</button>
                         {(li.dropdown_show && li.props)?
                             <DropdownMenu
                                 props={li.props}

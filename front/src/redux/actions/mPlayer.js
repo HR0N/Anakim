@@ -2,7 +2,7 @@ import {GET_MUSIC_PLAYLIST, PLAY_FROM_PLAYLIST} from "./actionTypes";
 // import {store as Store} from "../../index";
 // function store() {return Store.getState().mPlayer}
 import apiClient from "../../services/api";
-import axios from "axios";
+// import axios from "axios";
 
 export function toggle_play(play) {
     let payload = !play;

@@ -1,7 +1,7 @@
 @import "../../variables";
 
 header{
-  font-family: Franklin Gothic Medium;
+  font-family: Franklin Gothic Medium, serif;
   width: 100%;
   list-style: none;
   position: relative;
@@ -22,7 +22,7 @@ header{
       li {
         display: flex;
         position: relative;
-        a{
+        a, button{
           padding: 2px 5px;
           flex-grow: 1;
           width: 100%;
@@ -32,6 +32,11 @@ header{
           color: #2c2c2c;
           cursor: pointer;
         }
+        button{
+           font-family: Franklin Gothic Medium, serif;
+           background-color: inherit;
+           border: none;
+         }
       }
     }
   }
@@ -47,8 +52,8 @@ header{
 }
 // todo: Animation Effect
 // underline links from center to width 100%
-.link_under_line_decoration>a{position: relative;}
-.link_under_line_decoration>a:before{
+.link_under_line_decoration>a, .link_under_line_decoration>button{position: relative;}
+.link_under_line_decoration>a:before, .link_under_line_decoration>button:before{
   content: '';
   bottom: 0;
   left: 0;
@@ -60,7 +65,7 @@ header{
   transform: scaleX(0);
   box-shadow: 1px 1px 2px grey;
 }
-.link_under_line_decoration>a:hover:before{
+.link_under_line_decoration>a:hover:before, .link_under_line_decoration>button:hover:before{
   transform: scaleX(1);
 }
 .active:before{

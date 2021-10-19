@@ -4,8 +4,8 @@ import {store} from "../../index";
 function Store() {return store.getState().header}
 
 export function dropdown_toggle(e, iLabel){
-    let links = Store() .links;
-    links.map((el, idx) => {
+    let links = Store().links;
+    links.map((el) => {
         if(el.label === iLabel){return el.dropdown_show = !el.dropdown_show}
         else if(el.label !== iLabel){return el.dropdown_show = false}else{return null}
     });
@@ -15,7 +15,7 @@ export function dropdown_toggle(e, iLabel){
 export function hide_all_dropdown(e) {
     let links = Store().links;
     if(!(e.target.hasAttribute('data-href'))){
-        links.map((el, idx) => {
+        links.map((el) => {
             return el.dropdown_show = false;
         });
     }

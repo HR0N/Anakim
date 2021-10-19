@@ -2,19 +2,17 @@ import {connect} from "react-redux";
 import {Component} from "react";
 import './mPlayer.scss'
 import './interface/interface.scss';
-import {} from "../../redux/actions/mPlayer";
 import PlayPause from "./interface/play_pause";
 import CurrentTime from "./interface/current_time";
 import PlayList from "./interface/play_list";
 import {faPlay, faWindowClose, faTasks} from "@fortawesome/free-solid-svg-icons";
-import {FaBluetoothB} from "react-icons/all";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React from "react";
 import {fetch_music} from "../../redux/actions/mPlayer";
 import Preloader from "../../containers/UI/preloader/preloader";
 
 
-let cur_sound_order = 0;
+// let cur_sound_order = 0;
 class mPlayer extends Component{
     state = {
         player: new Audio(),
@@ -52,7 +50,7 @@ class mPlayer extends Component{
         this.setState({play_music});
     }
     setSound(new_sound, callback = () => {}){
-        this.set_cur_sound_order((this.state.sound_counter));
+        /*this.set_cur_sound_order((this.state.sound_counter));*/
         let player = this.state.player;
         import(`../../music/${this.state.cur_album}/${new_sound}`).then((sound) => {
             player.src = sound.default;
@@ -62,7 +60,7 @@ class mPlayer extends Component{
         }).catch((error) => {console.log('import ERROR: ', error)});
     }
     get_cur_track_title(album, track_count){
-        this.set_cur_sound_order(track_count);
+        /*this.set_cur_sound_order(track_count);*/
         this.setState({cur_track_title: this.props.playlist[album].playlist[track_count].title});
     }
     get_sound(album= this.state.cur_album, track_count = this.state.sound_counter){
@@ -70,8 +68,7 @@ class mPlayer extends Component{
         return  this.props.playlist[album].playlist[track_count].src;
     }
     set_cur_sound_order(count){
-        // cur_sound_order = this.props.playlist[this.state.cur_album].playlist[count].order;
-        cur_sound_order = count;
+        // cur_sound_order = count;
     }
     set_sound_counter(){
         let album = this.state.cur_album;
@@ -126,7 +123,7 @@ class mPlayer extends Component{
     }
     play_clicked_sound(idx){
         this.clear_interval();
-        this.set_cur_sound_order(idx);
+        /*this.set_cur_sound_order(idx);*/
         this.setState({sound_counter: idx});
         new Promise((resolve) => {
             this.setSound(this.get_sound(this.state.cur_album, idx), resolve);

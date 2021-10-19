@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './AddProject.scss';
-import apiClient from "../../../services/api";
 
 const AddProject = props => {
 

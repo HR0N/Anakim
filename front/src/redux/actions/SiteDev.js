@@ -19,7 +19,7 @@ function get_projects(payload){
 export function add_project(data){
     return async dispatch => {
         try{
-            const response = await apiClient
+            await apiClient
                 .post('api/site_dev_create_project', data)
                 .then(/*res => console.log(res)*/)
                 .catch(err => console.error(err.response.data));
@@ -27,6 +27,4 @@ export function add_project(data){
         }
         catch(e){console.log(e)}
     };
-
-
 }
