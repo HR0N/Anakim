@@ -12,7 +12,7 @@ const AddProject = props => {
             title: project_name,
             user: 'Hron.',
         };
-        props.click2(data);
+        props.toggleAddProject(data);
         /*apiClient.post('api/site_dev_create_project', data)
             .then(/!*res => console.log(res)*!/)
             .catch(err => console.error(err.response.data));*/
@@ -22,6 +22,9 @@ const AddProject = props => {
         <input className={'form-control'} type="text" placeholder={'project name'}
         onChange={changeHandler.bind(this)}
         />
+        <div className="btn btn-outline-warning"
+             onClick={() => {props.back()}}
+        >Back</div>
         <div className="btn btn-outline-success"
         onClick={submitHandler.bind(this)}
         >Add</div>

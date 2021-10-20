@@ -2,11 +2,14 @@ import './SiteDev.scss';
 import {connect} from "react-redux";
 import React, {Component} from "react";
 import ProjectList from "./ProjectList/ProjectList";
+import CurrentProject from "./CurrentProject/CurrentProject";
 
 class SiteDev extends Component{
     state = {
         show_project: false,
         add_project: false,
+        current_project: false,
+        cur_project_id: null,
         title: 'Project List',
         project_name: '_example',
         projects: null,
@@ -14,26 +17,28 @@ class SiteDev extends Component{
     componentDidMount() {
     }
 
-    set_title(title) {
-        this.setState({title})
-    }
 
     render() {
         return (
             <div className={'SiteDev'}>
-                <p className={'title'}
-                >{this.state.title}</p>
-                <ProjectList
-                    add_project={this.state.add_project}
-                    click={() => {
-                        this.setState({add_project: !this.state.add_project});
-                        this.set_title('Add Project');
-                    }}
-                    click2={() => {
-                        this.setState({add_project: !this.state.add_project});
-                        this.set_title('Project List');
-                    }}
-                />
+                <div className="less300">
+                    <p className={'title'}
+                    >{this.state.title}</p>
+                    {this.state.cur_project_id === null
+                        ? <ProjectList
+                            add_project={this.state.add_project}
+                            toggleAddProject={() => {
+                                this.setState({add_project: !this.state.add_project});
+                            }}
+                            toggleCurrentProject={() => {this.setState({current_project: true})}}
+                            setCurProjId={(id) => {this.setState({cur_project_id: id});}}
+                        /> : false}
+                </div>
+                <div className="more300">
+                    {this.state.current_project && this.state.cur_project_id != null ? <CurrentProject
+                        toggleCurrentProject={() => {this.setState({current_project: !this.state.current_project})}}
+                    /> : false}
+                </div>
             </div>
         );
     }

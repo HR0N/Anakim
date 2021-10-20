@@ -1,3 +1,25 @@
 .CurrentProject{
-
+  .cur_project_ol{
+    background-color: rgba(97, 115, 255, 0.11);
+    border-radius: .2rem;
+    padding: 3px;
+  }
+  ol{
+    list-style: none;
+    li{
+      cursor: pointer;
+      &:hover{
+        background-color: rgba(76, 86, 255, 0.3);
+      }
+      &:nth-last-child(1){
+        border-bottom: none;
+      }
+    }
+  }
+  .footer{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
 }

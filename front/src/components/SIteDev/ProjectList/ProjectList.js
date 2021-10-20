@@ -17,7 +17,12 @@ class ProjectList extends Component{
 
     render_project_list(){
         return Object.keys(this.props.projects).map((key) => {
-            return (<li key={key} data-id={this.props.projects[key].id}>{this.props.projects[key].title}
+            return (<li key={key}
+                        onClick={() => {
+                            this.props.toggleCurrentProject();
+                            this.props.setCurProjId(this.props.projects[key].id);
+                        }}
+                        data-id={this.props.projects[key].id}>{this.props.projects[key].title}
             <div className="crud">
                 <button className="btn btn-outline-warning btn-sm">Edit</button>
                 <button className="btn btn-outline-danger btn-sm">Delete</button>
@@ -40,14 +45,15 @@ class ProjectList extends Component{
                 <ul>
                     {this.props.add_project
                         ? <AddProject
-                            click2={(data) => {
-                                this.props.click2();
+                            toggleAddProject={(data) => {
+                                this.props.toggleAddProject();
                                 this.props.addProject(data);
                             }}
+                            back={() => {this.props.toggleAddProject();}}
                         />
                         : ''}
                     {this.props.add_project ? '' : <li
-                        onClick={this.props.click}
+                        onClick={this.props.toggleAddProject}
                     ><FontAwesomeIcon icon={faPlus}/> Add</li>}
                     {this.props.projects != null && !this.props.add_project ? this.render_project_list() : ''}
                 </ul>
