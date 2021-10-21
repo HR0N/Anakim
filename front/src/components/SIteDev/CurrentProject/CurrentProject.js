@@ -17,6 +17,7 @@ class CurrentProject extends Component{
                 <Item
                     key={index}
                     main_item={val}
+                    addSubItem={this.props.addSubItem}
                 />
             );
         });

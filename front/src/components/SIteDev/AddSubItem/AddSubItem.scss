@@ -1,3 +1,19 @@
 .AddSubItem{
-
+  padding-top: 5px;
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+  input{
+    width: 100%;
+    box-sizing: border-box;
+  }
+.buttons{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+  .btn:nth-last-child(1){
+    margin-left: 5px;
+  }
+}
 }

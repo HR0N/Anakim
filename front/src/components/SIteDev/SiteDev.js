@@ -3,17 +3,20 @@ import {connect} from "react-redux";
 import React, {Component} from "react";
 import ProjectList from "./ProjectList/ProjectList";
 import CurrentProject from "./CurrentProject/CurrentProject";
+import AddSubItem from "./AddSubItem/AddSubItem";
 
 class SiteDev extends Component{
     state = {
         show_project: false,
         add_project: false,
         current_project: false,
+        add_sub_item: false,
         cur_project_id: null,
         title: 'Project List',
         project_name: '_example',
         projects: null,
     };
+
     componentDidMount() {
     }
 
@@ -36,7 +39,18 @@ class SiteDev extends Component{
                 </div>
                 <div className="more300">
                     {this.state.current_project && this.state.cur_project_id != null ? <CurrentProject
+                        addSubItem={() => {
+                            this.setState({add_sub_item: !this.state.add_sub_item});
+                            this.setState({current_project: !this.state.current_project});
+
+                        }}
                         toggleCurrentProject={() => {this.setState({current_project: !this.state.current_project})}}
+                    /> : false}
+                    {this.state.add_sub_item ? <AddSubItem
+                        returnToCurrentProject={() => {
+                            this.setState({add_sub_item: !this.state.add_sub_item});
+                            this.setState({current_project: !this.state.current_project});
+                        }}
                     /> : false}
                 </div>
             </div>
