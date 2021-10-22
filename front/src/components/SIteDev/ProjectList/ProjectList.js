@@ -32,7 +32,7 @@ class ProjectList extends Component{
     }
 
     componentDidMount() {
-        this.unsubscribe = store.subscribe(() => {this.forceUpdate()});
+        this.unsubscribe = store.subscribe(() => {this.forceUpdate();});
         this.props.fetch_projects();
     }
     componentWillUnmount() {

@@ -1,16 +1,39 @@
 import './AddSubItem.scss';
 import {connect} from "react-redux";
 import {Component} from "react";
+import {add_sub_item} from "../../../redux/actions/SiteDev";
 
 class AddSubItem extends Component{
+    state = {
+        input: null,
+    };
+    inputHandler(e){
+        this.setState({input: e.target.value})
+    }
+    sendRequest(){
+        let data = {
+            project: this.props.cur_project,
+            item: this.props.cur_item,
+            text: this.state.input,
+            finished: false,
+        };
+        this.props.add_sub_item(data);
+    }
 
     render() {
         return (
             <div className={'AddSubItem'}>
-                <input className={'form-control'} type="text" placeholder={'Новый пункт'}/>
+                <input
+                    className={'form-control'}
+                    type="text"
+                    placeholder={'Новый пункт'}
+                    onChange={this.inputHandler.bind(this)}
+                />
                 <div className="buttons">
                     <div className="btn btn-outline-dark" onClick={() => {this.props.returnToCurrentProject()}}>Назад</div>
-                    <div className="btn btn-outline-success">Добавить</div>
+                    <div className="btn btn-outline-success"
+                         onClick={() => {this.sendRequest()}}
+                    >Добавить</div>
                 </div>
             </div>
         );
@@ -22,10 +45,13 @@ class AddSubItem extends Component{
 
 function mapStateToProps(state) {
     return {
+        cur_item: state.SiteDevReducer.cur_item,
+        cur_project: state.SiteDevReducer.cur_project_id,
     };
 }
 function mapDispatchToProps(dispatch) {
     return {
+        add_sub_item: (data) => {dispatch(add_sub_item(data))}
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddSubItem);

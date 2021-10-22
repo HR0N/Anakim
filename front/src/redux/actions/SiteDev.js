@@ -1,4 +1,4 @@
-import {GET_PROJECTS} from "./actionTypes";
+import {CHANGE_CUR_ITEM, CHANGE_CUR_PROJECT, GET_PROJECTS, GET_SUB_ITEMS} from "./actionTypes";
 import apiClient from "../../services/api";
 
 
@@ -27,4 +27,36 @@ export function add_project(data){
         }
         catch(e){console.log(e)}
     };
+}
+export function change_cur_project(payload) {
+    return {type: CHANGE_CUR_PROJECT, payload};
+}
+export function change_cur_item(payload) {
+    return {type: CHANGE_CUR_ITEM, payload};
+}
+export function add_sub_item(data) {
+    return async dispatch => {
+        try{
+            await apiClient
+                .post('api/site_dev_create_sub_item', data)
+                .then(/*res => console.log(res)*/)
+                .catch(err => console.error(err.response.data));
+            dispatch(fetch_sub_items());
+            console.log(data);
+        }
+        catch(e){console.log(e)}
+    };
+}
+export function fetch_sub_items(){
+    return async dispatch => {
+        try{
+            const response = await apiClient
+                .get("api/show_all_sub_items");
+            dispatch(get_sub_items(response.data));
+        }
+        catch(e){console.log(e)}
+    }
+}
+export function get_sub_items(payload) {
+    return {type: GET_SUB_ITEMS, payload}
 }

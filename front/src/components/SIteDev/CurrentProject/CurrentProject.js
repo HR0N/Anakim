@@ -2,6 +2,7 @@ import './CurrentProject.scss';
 import {connect} from "react-redux";
 import {Component} from "react";
 import Item from "./Item/Item";
+// import {fetch_sub_items} from "../../../redux/actions/SiteDev";
 
 
 const main_items = ["Постановка целей и задач;", "Проработка технического задания;", "Прототипирование;",
@@ -16,6 +17,8 @@ class CurrentProject extends Component{
             return (
                 <Item
                     key={index}
+                    index={index}
+                    cur_project_id={this.props.cur_project_id}
                     main_item={val}
                     addSubItem={this.props.addSubItem}
                 />
@@ -23,6 +26,11 @@ class CurrentProject extends Component{
         });
     }
     componentDidMount() {
+        /*this.props.fetchSubItems();
+        this.unsubscribe = store.subscribe(() => {this.forceUpdate(); console.log(this.props.sub_items);});*/
+    }
+    componentWillUnmount() {
+        /*this.unsubscribe();*/
     }
 
     render() {
@@ -32,7 +40,9 @@ class CurrentProject extends Component{
                     {this.render_items()}
                 </ol>
                 <div className="footer">
-                    <div className="btn btn-outline-dark">Назад</div>
+                    <div className="btn btn-outline-dark"
+                    onClick={() => {this.props.back()}}
+                    >Назад</div>
                 </div>
             </div>
         );
@@ -44,10 +54,12 @@ class CurrentProject extends Component{
 
 function mapStateToProps(state) {
     return {
+        // sub_items: state.SiteDevReducer.sub_items,
     };
 }
 function mapDispatchToProps(dispatch) {
     return {
+        // fetchSubItems: () => {dispatch(fetch_sub_items())}
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentProject);

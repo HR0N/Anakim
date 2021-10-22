@@ -12,6 +12,7 @@ class SiteDev extends Component{
         current_project: false,
         add_sub_item: false,
         cur_project_id: null,
+        cur_item_id: null,
         title: 'Project List',
         project_name: '_example',
         projects: null,
@@ -38,15 +39,19 @@ class SiteDev extends Component{
                         /> : false}
                 </div>
                 <div className="more300">
-                    {this.state.current_project && this.state.cur_project_id != null ? <CurrentProject
+                    {this.state.current_project && this.state.cur_project_id != null
+                        ? <CurrentProject
+                            cur_project_id={this.state.cur_project_id}
                         addSubItem={() => {
                             this.setState({add_sub_item: !this.state.add_sub_item});
                             this.setState({current_project: !this.state.current_project});
 
                         }}
                         toggleCurrentProject={() => {this.setState({current_project: !this.state.current_project})}}
+                        back={() => {this.setState({cur_project_id: null})}}
                     /> : false}
-                    {this.state.add_sub_item ? <AddSubItem
+                    {this.state.add_sub_item
+                        ? <AddSubItem
                         returnToCurrentProject={() => {
                             this.setState({add_sub_item: !this.state.add_sub_item});
                             this.setState({current_project: !this.state.current_project});

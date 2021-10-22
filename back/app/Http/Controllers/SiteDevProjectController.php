@@ -17,6 +17,10 @@ class SiteDevProjectController extends Controller
     {
         return SiteDevProjects::all();
     }
+    public function index_sub_items()
+    {
+        return SubItem::all();
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -40,6 +44,7 @@ class SiteDevProjectController extends Controller
             'project' => 'required',
             'item' => 'required',
             'text' => 'required',
+            'finished',
         ]);
         return SubItem::create($validated);
 
