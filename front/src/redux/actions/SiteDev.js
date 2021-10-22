@@ -47,11 +47,11 @@ export function add_sub_item(data) {
         catch(e){console.log(e)}
     };
 }
-export function fetch_sub_items(){
+export function fetch_sub_items(id){
     return async dispatch => {
         try{
             const response = await apiClient
-                .get("api/show_all_sub_items");
+                .get("api/show_all_sub_items/"+id);
             dispatch(get_sub_items(response.data));
         }
         catch(e){console.log(e)}

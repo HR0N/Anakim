@@ -2,7 +2,7 @@ import './CurrentProject.scss';
 import {connect} from "react-redux";
 import {Component} from "react";
 import Item from "./Item/Item";
-// import {fetch_sub_items} from "../../../redux/actions/SiteDev";
+import {fetch_sub_items} from "../../../redux/actions/SiteDev";
 
 
 const main_items = ["Постановка целей и задач;", "Проработка технического задания;", "Прототипирование;",
@@ -26,11 +26,7 @@ class CurrentProject extends Component{
         });
     }
     componentDidMount() {
-        /*this.props.fetchSubItems();
-        this.unsubscribe = store.subscribe(() => {this.forceUpdate(); console.log(this.props.sub_items);});*/
-    }
-    componentWillUnmount() {
-        /*this.unsubscribe();*/
+        this.props.fetchSubItems(this.props.cur_project_id);
     }
 
     render() {
@@ -54,12 +50,13 @@ class CurrentProject extends Component{
 
 function mapStateToProps(state) {
     return {
-        // sub_items: state.SiteDevReducer.sub_items,
+        sub_items: state.SiteDevReducer.sub_items,
+        current_project_id: state.SiteDevReducer.current_project_id,
     };
 }
 function mapDispatchToProps(dispatch) {
     return {
-        // fetchSubItems: () => {dispatch(fetch_sub_items())}
+        fetchSubItems: (id) => {dispatch(fetch_sub_items(id))},
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentProject);

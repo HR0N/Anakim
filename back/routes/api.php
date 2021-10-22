@@ -28,7 +28,7 @@ Route::put('/update_music_list_array', [MusicListController::class, 'update_arra
 Route::get('/get_my_animal_back_peach', [AnimalIpController::class, 'index']);
 // SiteDev
 Route::get('/show_all_projects', [SiteDevProjectController::class, 'index']);
-Route::get('/show_all_sub_items', [SiteDevProjectController::class, 'index_sub_items']);
+Route::get('/show_all_sub_items/{id}', [SiteDevProjectController::class, 'index_sub_items']);
 Route::post('/site_dev_create_project', [SiteDevProjectController::class, 'store']);
 Route::post('/site_dev_create_sub_item', [SiteDevProjectController::class, 'store_sub_item']);
 

@@ -3,7 +3,7 @@ import {Component} from "react";
 import './Item.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {change_cur_item, change_cur_project, fetch_sub_items} from "../../../../redux/actions/SiteDev";
+import {change_cur_item, change_cur_project} from "../../../../redux/actions/SiteDev";
 import {store} from "../../../../index";
 
 class Item extends Component{
@@ -12,15 +12,25 @@ class Item extends Component{
     };
 
     componentDidMount() {
-        this.props.fetchSubItems();
-        console.log(this.props.sub_items);
-        // this.unsubscribe = store.subscribe(() => {this.forceUpdate(); console.log(this.props.sub_items);});
+        this.unsubscribe = store.subscribe(() => {this.forceUpdate()});
     }
     componentWillUnmount() {
-        // this.unsubscribe();
+        this.unsubscribe();
     }
 
-    render_sub_items(){}
+    render_sub_items(){
+        return this.props.sub_items.map((val, index) => {
+            if(this.props.index === val.item){
+                return (
+                    <li
+                        key={index}
+                        data-id={val.id}
+                    >{val.text}</li>
+                );
+            }
+        });
+    }
+
 
     render() {
         return (
@@ -43,13 +53,15 @@ class Item extends Component{
                 </div>
             </span>
                 <ol className={'Item_sub'}>
-                    <li>One</li>
+                    {this.props.sub_items
+                    ? this.render_sub_items() : false}
+                    {/*<li>One</li>
                     <li>Two</li>
                     <li>Three</li>
                     <li>Four</li>
                     <li>Five</li>
                     <li>Six</li>
-                    <li>Seven</li>
+                    <li>Seven</li>*/}
                 </ol>
 
             </li>
@@ -69,7 +81,6 @@ function mapDispatchToProps(dispatch) {
     return {
         change_cur_item: (id) => {dispatch(change_cur_item(id))},
         change_cur_project: (id) => {dispatch(change_cur_project(id))},
-        fetchSubItems: () => {dispatch(fetch_sub_items())},
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

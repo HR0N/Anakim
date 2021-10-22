@@ -17,9 +17,10 @@ class SiteDevProjectController extends Controller
     {
         return SiteDevProjects::all();
     }
-    public function index_sub_items()
+    public function index_sub_items($id)
     {
-        return SubItem::all();
+//        return SubItem::all();
+        return SubItem::where('project', $id)->get();
     }
 
     /**
