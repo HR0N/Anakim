@@ -15,13 +15,15 @@ class Item extends Component{
             <li
                 className={`Item ${this.state.show ? ' show_item ' : ''}`}
             ><span
+                className={'container'}
                 onClick={() => {
                     this.setState({show: !this.state.show});
-                    this.props.addSubItem();
                 }}
             >{this.props.main_item}
                 <div className="buttons">
-                    <div className="btn btn-outline-dark"><FontAwesomeIcon icon={faPlus} /></div>
+                    <div className="btn btn-outline-dark"
+                         onClick={() => {this.props.addSubItem();}}
+                    ><FontAwesomeIcon icon={faPlus}/></div>
                 </div>
             </span>
                 <ol className={'Item_sub'}>

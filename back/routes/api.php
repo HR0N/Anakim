@@ -29,6 +29,7 @@ Route::get('/get_my_animal_back_peach', [AnimalIpController::class, 'index']);
 // SiteDev
 Route::get('/show_all_projects', [SiteDevProjectController::class, 'index']);
 Route::post('/site_dev_create_project', [SiteDevProjectController::class, 'store']);
+Route::post('/site_dev_create_sub_item', [SiteDevProjectController::class, 'store_sub_item']);
 
 
 /*todo:                                                                         Protected                */

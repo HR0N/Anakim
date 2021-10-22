@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiteDevProjects;
+use App\Models\SubItem;
 use Illuminate\Http\Request;
 
 class SiteDevProjectController extends Controller
@@ -31,6 +32,16 @@ class SiteDevProjectController extends Controller
             'user' => 'required',
         ]);
         return SiteDevProjects::create($validated);
+
+    }
+    public function store_sub_item(Request $request)
+    {
+        $validated = $request->validate([
+            'project' => 'required',
+            'item' => 'required',
+            'text' => 'required',
+        ]);
+        return SubItem::create($validated);
 
     }
 

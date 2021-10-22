@@ -5,7 +5,7 @@ const initialState = {
     accordion_mobile_show: false,
     links: [
         {to: '/', label: 'Home', exact: true, dropdown_show: false},
-        {to: 'false', label: 'Tips & Tricks', exact: true, dropdown_show: false, props: [
+        {to: 'false', label: 'Tricks', exact: true, dropdown_show: false, props: [
                 {to: '/key_code', label: 'Key code', exact: true,},
                 {to: '/site_dev', label: 'Site dev', exact: true,},
             ]},
