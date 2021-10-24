@@ -36,7 +36,7 @@ Route::post('/site_dev_destroy_sub_item/{id}', [SiteDevProjectController::class,
 Route::put('/site_dev_edit_sub_item/{id}', [SiteDevProjectController::class, 'update']);
 
 
-/*todo:                                                                         Protected                */
+/*todo:                                                                          Protected                */
 Route::group(['middleware' => ['auth:sanctum']], function (){
 // Logout
     Route::get('/logout', [AuthController::class, 'logout']);
