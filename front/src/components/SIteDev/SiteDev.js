@@ -52,6 +52,7 @@ class SiteDev extends Component{
                     /> : false}
                     {this.state.add_sub_item
                         ? <AddSubItem
+                            cur_project={this.state.cur_project_id}
                         returnToCurrentProject={() => {
                             this.setState({add_sub_item: !this.state.add_sub_item});
                             this.setState({current_project: !this.state.current_project});

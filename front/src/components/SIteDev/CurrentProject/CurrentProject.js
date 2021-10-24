@@ -2,7 +2,7 @@ import './CurrentProject.scss';
 import {connect} from "react-redux";
 import {Component} from "react";
 import Item from "./Item/Item";
-import {fetch_sub_items} from "../../../redux/actions/SiteDev";
+import {destroy_project, fetch_sub_items} from "../../../redux/actions/SiteDev";
 
 
 const main_items = ["Постановка целей и задач;", "Проработка технического задания;", "Прототипирование;",
@@ -10,6 +10,8 @@ const main_items = ["Постановка целей и задач;", "Прор�
     "Сдача проекта;"];
 
 class CurrentProject extends Component{
+    state = {
+    };
 
 
     render_items(){
@@ -28,6 +30,13 @@ class CurrentProject extends Component{
     componentDidMount() {
         this.props.fetchSubItems(this.props.cur_project_id);
     }
+    delete_project(){
+        let result = window.confirm('Удалить этот проект?');
+        if(result){
+            this.props.destroy_project(this.props.cur_project_id);
+            this.props.back();
+        }
+    }
 
     render() {
         return (
@@ -37,7 +46,12 @@ class CurrentProject extends Component{
                 </ol>
                 <div className="footer">
                     <div className="btn btn-outline-dark"
-                    onClick={() => {this.props.back()}}
+                         onClick={() => {
+                             this.delete_project();
+                         }}
+                    >Удалить</div>
+                    <div className="btn btn-outline-dark"
+                         onClick={() => {this.props.back()}}
                     >Назад</div>
                 </div>
             </div>
@@ -56,6 +70,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
+        destroy_project: (id) => {dispatch(destroy_project(id))},
         fetchSubItems: (id) => {dispatch(fetch_sub_items(id))},
     }
 }

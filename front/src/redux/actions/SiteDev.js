@@ -41,8 +41,7 @@ export function add_sub_item(data) {
                 .post('api/site_dev_create_sub_item', data)
                 .then(/*res => console.log(res)*/)
                 .catch(err => console.error(err.response.data));
-            dispatch(fetch_sub_items());
-            console.log(data);
+            dispatch(fetch_sub_items(data.project));
         }
         catch(e){console.log(e)}
     };
@@ -59,4 +58,28 @@ export function fetch_sub_items(id){
 }
 export function get_sub_items(payload) {
     return {type: GET_SUB_ITEMS, payload}
+}
+export function destroy_project(id) {
+    return async dispatch => {
+        try{
+            await apiClient
+                .post('api/site_dev_destroy/'+id)
+                .then(/*res => console.log(res)*/)
+                .catch(err => console.error(err.response.data));
+            dispatch(fetch_projects());
+        }
+        catch(e){console.log(e)}
+    };
+}
+export function destroy_sub_item(id, project) {
+    return async dispatch => {
+        try{
+            await apiClient
+                .post('api/site_dev_destroy_sub_item/'+id)
+                .then(/*res => console.log(res)*/)
+                .catch(err => console.error(err.response.data));
+            dispatch(fetch_sub_items(project));
+        }
+        catch(e){console.log(e)}
+    };
 }

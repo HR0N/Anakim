@@ -82,6 +82,10 @@ class SiteDevProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SiteDevProjects::destroy($id);
+    }
+    public function destroy_sub_item($id)
+    {
+        SubItem::destroy($id);
     }
 }

@@ -17,7 +17,7 @@ class AddSubItem extends Component{
             text: this.state.input,
             finished: false,
         };
-        this.props.add_sub_item(data);
+        this.props.rAddSubItem(data);
     }
 
     render() {
@@ -27,12 +27,18 @@ class AddSubItem extends Component{
                     className={'form-control'}
                     type="text"
                     placeholder={'Новый пункт'}
+                    autoFocus={true}
                     onChange={this.inputHandler.bind(this)}
                 />
                 <div className="buttons">
-                    <div className="btn btn-outline-dark" onClick={() => {this.props.returnToCurrentProject()}}>Назад</div>
+                    <div className="btn btn-outline-dark"
+                         onClick={() => {this.props.returnToCurrentProject()}}
+                    >Назад</div>
                     <div className="btn btn-outline-success"
-                         onClick={() => {this.sendRequest()}}
+                         onClick={() => {
+                             this.sendRequest();
+                             this.props.returnToCurrentProject();
+                         }}
                     >Добавить</div>
                 </div>
             </div>
@@ -46,12 +52,12 @@ class AddSubItem extends Component{
 function mapStateToProps(state) {
     return {
         cur_item: state.SiteDevReducer.cur_item,
-        cur_project: state.SiteDevReducer.cur_project_id,
+        // cur_project: state.SiteDevReducer.cur_project_id,
     };
 }
 function mapDispatchToProps(dispatch) {
     return {
-        add_sub_item: (data) => {dispatch(add_sub_item(data))}
+        rAddSubItem: (data) => {dispatch(add_sub_item(data))}
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddSubItem);

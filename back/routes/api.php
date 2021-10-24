@@ -31,6 +31,8 @@ Route::get('/show_all_projects', [SiteDevProjectController::class, 'index']);
 Route::get('/show_all_sub_items/{id}', [SiteDevProjectController::class, 'index_sub_items']);
 Route::post('/site_dev_create_project', [SiteDevProjectController::class, 'store']);
 Route::post('/site_dev_create_sub_item', [SiteDevProjectController::class, 'store_sub_item']);
+Route::post('/site_dev_destroy/{id}', [SiteDevProjectController::class, 'destroy']);
+Route::post('/site_dev_destroy_sub_item/{id}', [SiteDevProjectController::class, 'destroy_sub_item']);
 
 
 /*todo:                                                                         Protected                */

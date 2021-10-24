@@ -3,13 +3,20 @@ import {Component} from "react";
 import './Item.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {change_cur_item, change_cur_project} from "../../../../redux/actions/SiteDev";
+import {change_cur_item, change_cur_project, destroy_sub_item} from "../../../../redux/actions/SiteDev";
 import {store} from "../../../../index";
 
 class Item extends Component{
     state = {
         show: false,
     };
+
+    delete_sub_item(id){
+        let result = window.confirm('Удалить задачу?');
+        if(result){
+            this.props.rDestroySubItem(id, this.props.cur_project_id);
+        }
+    }
 
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {this.forceUpdate()});
@@ -25,7 +32,18 @@ class Item extends Component{
                     <li
                         key={index}
                         data-id={val.id}
-                    >{val.text}</li>
+                    >{val.text}
+                    <div className="buttons">
+                        <div className="buttons__toggle">
+                            <div className="btn btn-outline-dark"
+
+                            >Edit</div>
+                            <div className="btn btn-outline-dark"
+                                onClick={() => {this.delete_sub_item(val.id)}}
+                            >Delete</div>
+                        </div>
+                    </div>
+                    </li>
                 );
             }
         });
@@ -81,6 +99,7 @@ function mapDispatchToProps(dispatch) {
     return {
         change_cur_item: (id) => {dispatch(change_cur_item(id))},
         change_cur_project: (id) => {dispatch(change_cur_project(id))},
+        rDestroySubItem: (id, project) => {dispatch(destroy_sub_item(id, project))},
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Item);
