@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import ProjectList from "./ProjectList/ProjectList";
 import CurrentProject from "./CurrentProject/CurrentProject";
 import AddSubItem from "./AddSubItem/AddSubItem";
+import EditSubItem from "./EditSubItem/EditSubItem";
 
 class SiteDev extends Component{
     state = {
@@ -11,6 +12,7 @@ class SiteDev extends Component{
         add_project: false,
         current_project: false,
         add_sub_item: false,
+        edit_sub_item: false,
         cur_project_id: null,
         cur_item_id: null,
         title: 'Project List',
@@ -42,22 +44,32 @@ class SiteDev extends Component{
                     {this.state.current_project && this.state.cur_project_id != null
                         ? <CurrentProject
                             cur_project_id={this.state.cur_project_id}
-                        addSubItem={() => {
-                            this.setState({add_sub_item: !this.state.add_sub_item});
-                            this.setState({current_project: !this.state.current_project});
-
-                        }}
-                        toggleCurrentProject={() => {this.setState({current_project: !this.state.current_project})}}
-                        back={() => {this.setState({cur_project_id: null})}}
+                            addSubItem={() => {
+                                this.setState({add_sub_item: !this.state.add_sub_item});
+                                this.setState({current_project: !this.state.current_project});
+                            }}
+                            toggleCurrentProject={() => {this.setState({current_project: !this.state.current_project})}}
+                            toggleEditSubItem={() => {
+                                this.setState({edit_sub_item: !this.state.edit_sub_item});
+                                this.setState({current_project: !this.state.current_project});
+                            }}
+                            back={() => {this.setState({cur_project_id: null})}}
                     /> : false}
                     {this.state.add_sub_item
                         ? <AddSubItem
                             cur_project={this.state.cur_project_id}
-                        returnToCurrentProject={() => {
-                            this.setState({add_sub_item: !this.state.add_sub_item});
-                            this.setState({current_project: !this.state.current_project});
-                        }}
+                            returnToCurrentProject={() => {
+                                this.setState({add_sub_item: !this.state.add_sub_item});
+                                this.setState({current_project: !this.state.current_project});
+                            }}
                     /> : false}
+                    {this.state.edit_sub_item
+                    ? <EditSubItem
+                        back={() => {this.setState({
+                            edit_sub_item: false,
+                            current_project: true,
+                        })}}
+                        /> : false}
                 </div>
             </div>
         );

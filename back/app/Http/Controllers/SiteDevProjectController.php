@@ -71,7 +71,9 @@ class SiteDevProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subItem = SubItem::find($id);
+        $subItem->update($request->all());
+        return $subItem;
     }
 
     /**

@@ -33,6 +33,7 @@ Route::post('/site_dev_create_project', [SiteDevProjectController::class, 'store
 Route::post('/site_dev_create_sub_item', [SiteDevProjectController::class, 'store_sub_item']);
 Route::post('/site_dev_destroy/{id}', [SiteDevProjectController::class, 'destroy']);
 Route::post('/site_dev_destroy_sub_item/{id}', [SiteDevProjectController::class, 'destroy_sub_item']);
+Route::put('/site_dev_edit_sub_item/{id}', [SiteDevProjectController::class, 'update']);
 
 
 /*todo:                                                                         Protected                */

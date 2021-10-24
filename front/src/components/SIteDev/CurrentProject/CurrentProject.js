@@ -23,6 +23,7 @@ class CurrentProject extends Component{
                     cur_project_id={this.props.cur_project_id}
                     main_item={val}
                     addSubItem={this.props.addSubItem}
+                    toggleEditSubItem={this.props.toggleEditSubItem}
                 />
             );
         });

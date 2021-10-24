@@ -13,9 +13,6 @@ const AddProject = props => {
             user: 'Hron.',
         };
         props.toggleAddProject(data);
-        /*apiClient.post('api/site_dev_create_project', data)
-            .then(/!*res => console.log(res)*!/)
-            .catch(err => console.error(err.response.data));*/
     }
     return(
     <div className='AddProject'>

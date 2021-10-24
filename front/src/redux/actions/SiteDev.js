@@ -1,4 +1,4 @@
-import {CHANGE_CUR_ITEM, CHANGE_CUR_PROJECT, GET_PROJECTS, GET_SUB_ITEMS} from "./actionTypes";
+import {CHANGE_CUR_ITEM, CHANGE_CUR_PROJECT, GET_PROJECTS, GET_SUB_ITEMS, SET_SUB_ITEM_EDIT_VALUE} from "./actionTypes";
 import apiClient from "../../services/api";
 
 
@@ -76,6 +76,21 @@ export function destroy_sub_item(id, project) {
         try{
             await apiClient
                 .post('api/site_dev_destroy_sub_item/'+id)
+                .then(/*res => console.log(res)*/)
+                .catch(err => console.error(err.response.data));
+            dispatch(fetch_sub_items(project));
+        }
+        catch(e){console.log(e)}
+    };
+}
+export function set_sub_item_edit_value(payload) {
+    return {type: SET_SUB_ITEM_EDIT_VALUE, payload};
+}
+export function edit_sub_item(id, project, data) {
+    return async dispatch => {
+        try{
+            await apiClient
+                .put('api/site_dev_edit_sub_item/'+id, data)
                 .then(/*res => console.log(res)*/)
                 .catch(err => console.error(err.response.data));
             dispatch(fetch_sub_items(project));

@@ -14,3 +14,4 @@ export  const  GET_PROJECTS = 'GET_PROJECTS';
 export  const  CHANGE_CUR_PROJECT = 'CHANGE_CUR_PROJECT';
 export  const  CHANGE_CUR_ITEM = 'CHANGE_CUR_ITEM';
 export  const  GET_SUB_ITEMS = 'GET_SUB_ITEMS';
+export  const  SET_SUB_ITEM_EDIT_VALUE = 'SET_SUB_ITEM_EDIT_VALUE';
