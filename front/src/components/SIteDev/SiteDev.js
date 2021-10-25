@@ -41,7 +41,7 @@ class SiteDev extends Component{
                         /> : false}
                 </div>
                 <div className="more300">
-                    {this.state.current_project && this.state.cur_project_id != null
+                    {this.state.current_project && this.state.cur_project_id !== null
                         ? <CurrentProject
                             cur_project_id={this.state.cur_project_id}
                             addSubItem={() => {
