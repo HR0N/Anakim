@@ -6,6 +6,10 @@ import CurrentProject from "./CurrentProject/CurrentProject";
 import AddSubItem from "./AddSubItem/AddSubItem";
 import EditSubItem from "./EditSubItem/EditSubItem";
 
+const titles = {
+    show_project: '',
+};
+
 class SiteDev extends Component{
     state = {
         show_project: false,
@@ -21,8 +25,12 @@ class SiteDev extends Component{
     };
 
     componentDidMount() {
+
     }
 
+    change_title(title){
+        this.setState({title})
+    }
 
     render() {
         return (
@@ -43,6 +51,7 @@ class SiteDev extends Component{
                 <div className="more300">
                     {this.state.current_project && this.state.cur_project_id !== null
                         ? <CurrentProject
+                            setTitle={(title) => {this.change_title(title)}}
                             cur_project_id={this.state.cur_project_id}
                             addSubItem={() => {
                                 this.setState({add_sub_item: !this.state.add_sub_item});
@@ -53,7 +62,10 @@ class SiteDev extends Component{
                                 this.setState({edit_sub_item: !this.state.edit_sub_item});
                                 this.setState({current_project: !this.state.current_project});
                             }}
-                            back={() => {this.setState({cur_project_id: null})}}
+                            back={() => {
+                                this.setState({cur_project_id: null});
+                                this.change_title('Project List');
+                            }}
                     /> : false}
                     {this.state.add_sub_item
                         ? <AddSubItem

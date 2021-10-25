@@ -30,6 +30,16 @@ class CurrentProject extends Component{
     }
     componentDidMount() {
         this.props.fetchSubItems(this.props.cur_project_id);
+        this.change_title();
+    }
+    change_title(){
+        if(this.props.cur_project_id){
+            this.props.projects.map((val) => {
+                if(val.id === this.props.cur_project_id){
+                    return this.props.setTitle(val.title);
+                }
+            });
+        }
     }
     delete_project(){
         let result = window.confirm('Удалить этот проект?');
@@ -67,6 +77,7 @@ function mapStateToProps(state) {
     return {
         sub_items: state.SiteDevReducer.sub_items,
         current_project_id: state.SiteDevReducer.current_project_id,
+        projects: state.SiteDevReducer.projects,
     };
 }
 function mapDispatchToProps(dispatch) {
