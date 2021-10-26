@@ -25,7 +25,6 @@ class SiteDev extends Component{
     };
 
     componentDidMount() {
-
     }
 
     change_title(title){

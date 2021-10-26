@@ -14,6 +14,7 @@ import {store} from "../../../../index";
 class Item extends Component{
     state = {
         show: false,
+        all_finished: false,
     };
 
     delete_sub_item(id){
@@ -52,6 +53,7 @@ class Item extends Component{
                                 onClick={() => {this.delete_sub_item(val.id)}}
                             >Delete</div>
                         </div>
+                        <div className={`finished ${val.finished ? 'finished_true' : 'finished_false'}`}> </div>
                     </div>
                     </li>
                 );
@@ -79,6 +81,7 @@ class Item extends Component{
                          }}
                     ><FontAwesomeIcon icon={faPlus}/></div>
                 </div>
+                    <div className="finished"> </div>
             </span>
                 <ol className={'Item_sub'}>
                     {this.props.sub_items

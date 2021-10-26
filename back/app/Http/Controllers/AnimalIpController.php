@@ -15,8 +15,8 @@ class AnimalIpController extends Controller
     public function index()
     {
 
-        $user_ip = "46.219.220.13";
-//        $user_ip = $_SERVER['REMOTE_ADDR'];
+//        $user_ip = "46.219.220.13";
+        $user_ip = $_SERVER['REMOTE_ADDR'];
         $sxgeo = "http://ua.sxgeo.city/json/";
         $httpRequest = $sxgeo.$user_ip;
 
