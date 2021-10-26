@@ -16,7 +16,12 @@ class AnimalIpController extends Controller
     {
 
 //        $user_ip = "46.219.220.13";
-        $user_ip = $_SERVER['REMOTE_ADDR'];
+//        $user_ip = $_SERVER['REMOTE_ADDR'];
+        if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $user_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else if(isset($_SERVER['REMOTE_ADDR'])) {
+            $user_ip = $_SERVER['REMOTE_ADDR'];
+        }else{$user_ip = "00.000.000.00";}
         $sxgeo = "http://ua.sxgeo.city/json/";
         $httpRequest = $sxgeo.$user_ip;
 

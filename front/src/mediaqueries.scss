@@ -69,32 +69,33 @@
         transform: scaleX(0) !important;
     }
     .mPlayer_wrapper{
-        height: 100vh;
+        z-index: 3 !important;
     }
     .mPlayer{
-        height: calc(50vh - 4px) !important;
+        height: calc(150px) !important;
         flex-grow: 2;
         border-top: 1px solid #0c0f16;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         .player_interface{
+            margin-top: 10px;
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 40px;
-            height: 20%;
+            height: 50px;
         }
         .CurrentTime{
-            height: 20%;
+            margin-top: 10px;
+            height: 45px;
         }
     }
     .PlayList{
         box-shadow: inset 1px -1px 7px #1e1e1e;
         width: 100%;
-        position: fixed !important;
-        height: 50vh;
-        top: 0;
+        position: fixed;
+        height: 100vh;
+        top: calc(-100vh + 158px);
         left: 0;
         background-color: rgba(76, 76, 76, 1) !important;
         .title{

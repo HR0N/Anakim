@@ -57,7 +57,7 @@ class App extends Component{
                     <Route exact path={'/site_dev'} component={SiteDev}/>
                     <Route exact path={'/Auth'} />
                 </Switch>
-                {/*{this.state.ready_to_player_load ? <Player/> : false}*/}
+                {this.state.ready_to_player_load ? <Player/> : false}
 
             </div>
         );
