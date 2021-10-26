@@ -75,6 +75,12 @@ class SiteDevProjectController extends Controller
         $subItem->update($request->all());
         return $subItem;
     }
+    public function update_sub_item_finished(Request $request, $id)
+    {
+        $subItem = SubItem::find($id);
+        $subItem->update($request->all());
+        return $subItem;
+    }
 
     /**
      * Remove the specified resource from storage.

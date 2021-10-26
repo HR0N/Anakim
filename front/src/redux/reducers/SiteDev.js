@@ -3,7 +3,7 @@ import {
     CHANGE_CUR_PROJECT,
     GET_PROJECTS,
     GET_SUB_ITEMS,
-    SET_SUB_ITEM_EDIT_VALUE
+    SET_SUB_ITEM_EDIT_VALUE,
 } from "../actions/actionTypes";
 
 
@@ -13,6 +13,7 @@ const initialState = {
     cur_item: null,
     sub_items: null,
     sub_item_edit_value: {id: null, text: null},
+
 };
 
 export default function SiteDevReducer(state = initialState, action) {

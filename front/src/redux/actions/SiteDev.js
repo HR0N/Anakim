@@ -1,4 +1,11 @@
-import {CHANGE_CUR_ITEM, CHANGE_CUR_PROJECT, GET_PROJECTS, GET_SUB_ITEMS, SET_SUB_ITEM_EDIT_VALUE} from "./actionTypes";
+import {
+    CHANGE_CUR_ITEM,
+    CHANGE_CUR_PROJECT,
+    GET_PROJECTS,
+    GET_SUB_ITEMS,
+    SET_SUB_ITEM_EDIT_VALUE,
+    SET_SUB_ITEM_FINISHED
+} from "./actionTypes";
 import apiClient from "../../services/api";
 
 
@@ -91,6 +98,19 @@ export function edit_sub_item(id, project, data) {
         try{
             await apiClient
                 .put('api/site_dev_edit_sub_item/'+id, data)
+                .then(/*res => console.log(res)*/)
+                .catch(err => console.error(err.response.data));
+            dispatch(fetch_sub_items(project));
+        }
+        catch(e){console.log(e)}
+    };
+}
+export function set_sub_item_finished(id, project, data) {
+    console.log(id, project, data);
+    return async dispatch => {
+        try{
+            await apiClient
+                .put('api/site_dev_sub_item_finished/'+id, data)
                 .then(/*res => console.log(res)*/)
                 .catch(err => console.error(err.response.data));
             dispatch(fetch_sub_items(project));

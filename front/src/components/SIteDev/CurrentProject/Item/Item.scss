@@ -37,6 +37,17 @@
     &:hover .buttons{
       right: 5px;
     }
+
+    &:hover .list_indicator{
+      opacity: .7;
+    }
+    .list_indicator{
+      position: absolute;
+      top: 7px;
+      right: 0;
+        opacity: .2;
+      transition: linear all .5s;
+    }
   }
   .Item_sub{
     list-style: decimal;
@@ -55,21 +66,31 @@
     }
     .buttons{
       height: 100%;
-      width: 130px;
+      width: 260px;
       display: flex;
       justify-content: flex-end;
       position: absolute;
       top: 0;
       right: 0;
       overflow: hidden;
-      &:hover .buttons__toggle{right: 0;}
+      &:hover .buttons__toggle{right: 6px;}
       &__toggle{
         height: 100%;
         max-height: 28px;
         display: flex;
         position: absolute;
         transition: linear all .1s;
-        right: -130px;
+        right: -160px;
+        svg{
+          margin-right: 5px;
+          margin-top: 6px;
+          &:hover{
+            filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+          }
+          &:active{
+            filter: drop-shadow( 2px 2px 3px rgba(0, 0, 0, .1));
+          }
+        }
         .btn{
           height: 100%;
           display: flex;
